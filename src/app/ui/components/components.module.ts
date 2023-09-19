@@ -5,6 +5,7 @@ import { HomeModule } from './home/home.module';
 import { BasketsModule } from './baskets/baskets.module';
 import { AboutModule } from './about/about.module';
 import { ContactModule } from './contact/contact.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,7 @@ import { ContactModule } from './contact/contact.module';
     HomeModule,
     BasketsModule,
     AboutModule,
-    ContactModule
+    ContactModule,RouterModule
 
   ]
 })

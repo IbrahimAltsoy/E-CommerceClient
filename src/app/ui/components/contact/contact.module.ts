@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
     CommonModule
     ,
     RouterModule.forChild([
-      {path:"contact", component: ContactComponent}
+      {path:"", component: ContactComponent}
     ])
   ]
 })

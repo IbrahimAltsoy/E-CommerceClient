@@ -12,17 +12,15 @@ import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     RouterModule,
     AdminModule,
     UiModule
-
-
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

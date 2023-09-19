@@ -13,7 +13,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:"dashboard", component: DashboardComponent}
+      {path:"", component: OrderComponent}
     ])
   ]
 })
