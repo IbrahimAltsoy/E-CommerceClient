@@ -7,9 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'E-CommerceClient';
-  name(){
-    alert("saygılar")
-  }
+
 
 }
 
