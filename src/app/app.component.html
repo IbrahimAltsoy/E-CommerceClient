@@ -1,4 +1,12 @@
 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">E-Commerce</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
 <!-- about  -->
 <ul class="nav nav-tabs">
   <li class="nav-item">
@@ -26,12 +34,21 @@
   <li class="nav-item">
     <a class="nav-link" routerLink="contact">Contact</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="admin">Admin Panel</a>
-  </li>
-
   <!-- <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link" routerLink="admin">Admin Panel</a>
   </li> -->
 </ul>
+<form class="d-flex" role="search">
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success" type="submit" routerLink="admin">Admin</button>
+</form>
+</div>
+</div>
+</nav>
 <router-outlet></router-outlet>
+
+
+<ngx-spinner type="ball-spin" size="medium" name="s1" color="yellow"></ngx-spinner>
+<ngx-spinner type="line-spin-clockwise-fade" size="medium" name="s2" color="yellow"></ngx-spinner>
+<ngx-spinner type="ball-scale-multiple" size="medium" name="s3" color="yellow"></ngx-spinner>
+<ngx-spinner type="ball-fall" size="medium" name="s4" color="yellow"></ngx-spinner>

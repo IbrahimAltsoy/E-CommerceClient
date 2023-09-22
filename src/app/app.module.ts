@@ -6,13 +6,17 @@ import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { UiModule } from './ui/ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
 
   ],
   imports: [
@@ -21,12 +25,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     AdminModule,
     UiModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgxSpinnerModule,
 
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
