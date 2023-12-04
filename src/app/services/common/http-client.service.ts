@@ -24,15 +24,24 @@ get<T>(requestParameters: Partial<RequestParameter>, id?: string): Observable<T>
 }
 
 //
-post<T>(requestParameters: Partial<RequestParameter>, body: Partial<T>) :Observable<T>{
+// post<T>(requestParameters: Partial<RequestParameter>, body: Partial<T>) :Observable<T>{
 
-  let url:string = "";
-  if(requestParameters.fullEndPoint)
-  url = requestParameters.fullEndPoint;
+//   let url:string = "";
+//   if(requestParameters.fullEndPoint)
+//   url = requestParameters.fullEndPoint;
+//   else
+//   url = `${this.url(requestParameters)}${requestParameters.querystring?`?${requestParameters.querystring}`:""}`;
+//   return this.httpclient.post<T>(url, body,{ headers: requestParameters.headers});
+
+// }
+post<T>(requestParameter: Partial<RequestParameter>, body: Partial<T>): Observable<T> {
+  let url: string = "";
+  if (requestParameter.fullEndPoint)
+    url = requestParameter.fullEndPoint;
   else
-  url = `${this.url(requestParameters)}${requestParameters.querystring?`?${requestParameters.querystring}`:""}`;
-  return this.httpclient.post<T>(url, body,{ headers: requestParameters.headers});
+    url = `${this.url(requestParameter)}${requestParameter.querystring ? `?${requestParameter.querystring}` : ""}`
 
+  return this.httpclient.post<T>(url, body, { headers: requestParameter.headers, responseType: requestParameter.responseType as 'json' });
 }
 put<T>(requestParameters: Partial<RequestParameter>, body: Partial<T>):Observable<T>{
   let url:string = "";
@@ -68,5 +77,6 @@ export class RequestParameter{
   baseUrl?:string;
   fullEndPoint?: string;
   querystring?:string;
+  responseType?: string = 'json';
 
 }

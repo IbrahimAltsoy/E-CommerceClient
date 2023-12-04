@@ -1,7 +1,10 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">E-Commerce</a>
+    <a class="navbar-brand" href="#" style="color: blueviolet;font-size: 32px;">E-Ticaret</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,9 +13,9 @@
 <!-- about  -->
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" routerLink="">Home</a>
+    <a class="nav-link active" routerLink="" style="color: chocolate;font-size:x-large ;">Anasayfa</a>
   </li>
-  <li class="nav-item dropdown">
+  <!-- <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown
     </a>
@@ -21,34 +24,56 @@
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
     </ul>
+  </li> -->
+  <li class="nav-item">
+    <a class="nav-link" routerLink="about">Hakkımızda</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="about">About</a>
+    <a class="nav-link" routerLink="products">Ürünler</a>
+  </li>
+  <!-- <li class="nav-item">
+    <a class="nav-link" routerLink="baskets">Sepet</a>
+  </li> -->
+  <li class="nav-item">
+    <a class="nav-link" routerLink="contact">İletişim</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="products">Product</a>
+    <a class="nav-link" routerLink="register" *ngIf="!authService.isAuthencated">Kayıt Ol</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="baskets">Basket</a>
+    <a class="nav-link" routerLink="login" *ngIf="!authService.isAuthencated">Giriş Yap</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="contact">Contact</a>
+    <a class="nav-link" style="color:red; cursor: pointer;" *ngIf="authService.isAuthencated" (click)="signOut()">Çıkış Yap</a>
   </li>
   <!-- <li class="nav-item">
     <a class="nav-link" routerLink="admin">Admin Panel</a>
   </li> -->
 </ul>
 <form class="d-flex" role="search">
-  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success" type="submit" routerLink="admin">Admin</button>
+  <!-- <input class="form-control me-2" type="search" placeholder="Arama" aria-label="Search"> -->
+  <button class="btn btn-outline-success" type="submit" routerLink="admin" *ngIf="authService.isAuthencated">Admin</button>
+
 </form>
+<div class="d-flex">
+  <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#basketModal" (click)="loadComponent()">Sepet</button>
+</div>
 </div>
 </div>
 </nav>
 <router-outlet></router-outlet>
 
+</div>
 
+<div class="col-md-2"></div>
 <ngx-spinner type="ball-spin" size="medium" name="s1" color="yellow"></ngx-spinner>
 <ngx-spinner type="line-spin-clockwise-fade" size="medium" name="s2" color="yellow"></ngx-spinner>
 <ngx-spinner type="ball-scale-multiple" size="medium" name="s3" color="yellow"></ngx-spinner>
 <ngx-spinner type="ball-fall" size="medium" name="s4" color="yellow"></ngx-spinner>
+
+<!-- <app-baskets></app-baskets> -->
+<div class="modal fade" id="basketModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+<ng-template appDynamicLoadComponent></ng-template>
+</div>
+</div>

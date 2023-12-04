@@ -6,18 +6,23 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NgxToastrService {
 
+
   constructor(private toastr: ToastrService) { }
-  message(message:string, title: string, messageType:ToastrMessageType, toastposition: ToastrPosition){
-    this.toastr[messageType](message,title,{
-      positionClass: toastposition
-    })
-      }
-    }
+  message(message:string, title: string, toastrOptions: Partial<ToastrOptions>){
+this.toastr[toastrOptions.messageType](message,title,{
+  positionClass: toastrOptions.toastrPosition
+})
+  }
+}
 
 // export class ToastrOptions{
 //   messageType: ToastrMessageType= ToastrMessageType.Info;
 //   position: ToastrPosition= ToastrPosition.TopRight;
 // }
+export class ToastrOptions{
+  messageType: ToastrMessageType;
+  toastrPosition: ToastrPosition;
+  }
 export enum ToastrPosition{
   TopRight = "toast-top-right",
   BottomRight = "toast-bottom-right",

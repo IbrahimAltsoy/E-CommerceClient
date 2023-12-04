@@ -1,0 +1,30 @@
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+
+
+      <div class="form-group">
+        <label for="username">Kullanıcı Adı && Email</label>
+        <input #txtUsernameOrEmail type="text" class="form-control" id="username"  placeholder="Kullanıcı Adı && Email">
+        <!-- <small class="form-text text-muted invalid-feedback" ">**</small> -->
+      </div>
+
+      <div class="form-group">
+        <label for="password">Şifre</label>
+        <input #txtPassword type="password" class="form-control" id="password" placeholder="Şifre">
+        <!-- <small class="form-text text-muted invalid-feedback" ">**</small> -->
+      </div>
+
+      <br />
+      <button style="margin-bottom: 5px;margin-right: 5px;" type="submit" class="btn btn-primary" (click)="login(txtUsernameOrEmail.value,txtPassword.value)">Giriş Yap</button>
+      <a style="margin-bottom: 5px;margin-left: 5px;" routerLink="/password-reset" class="btn btn-warning">Şifremi Unuttum</a>
+
+      <asl-google-signin-button>Google ile Giriş</asl-google-signin-button>
+
+
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+<!-- type='icon'text='signin_with' width='200 - 400 ' size='medium' theme='outline' -->

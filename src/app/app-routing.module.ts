@@ -3,16 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './admin/layout/layout.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { HomeComponent } from './ui/components/home/home.component';
+import { authGuard } from './guards/common/auth.guard';
 
 const routes: Routes = [
   {
     path: "admin", component:LayoutComponent, children:[
       {path:"",component:DashboardComponent},
-      {path:"customer", loadChildren:()=>import("./admin/components/customer/customer.module").then(module=> module.CustomerModule) },
-      {path:"product", loadChildren:()=>import("./admin/components/product/product.module").then(module=>module.ProductModule)},
-      {path:"order", loadChildren:()=>import("./admin/components/order/order.module").then(module=>module.OrderModule)},
-      {path:"user", loadChildren:()=>import("./admin/components/user/user.module").then(module=>module.UserModule)}
-    ]
+      {path:"customer", loadChildren:()=>import("./admin/components/customer/customer.module").then(module=> module.CustomerModule),canActivate:[authGuard] },
+      {path:"product", loadChildren:()=>import("./admin/components/product/product.module").then(module=>module.ProductModule),canActivate:[authGuard]},
+      {path:"order", loadChildren:()=>import("./admin/components/order/order.module").then(module=>module.OrderModule),canActivate:[authGuard]},
+      {path:"user", loadChildren:()=>import("./admin/components/user/user.module").then(module=>module.UserModule),canActivate:[authGuard]},
+    ],canActivate:[authGuard]
 
   },
   {path:"", component:HomeComponent},
@@ -20,6 +21,11 @@ const routes: Routes = [
   {path:"baskets", loadChildren:()=>import("./ui/components/baskets/baskets.module").then(module=>module.BasketsModule)},
   {path:"contact", loadChildren:()=>import("./ui/components/contact/contact.module").then(module=>module.ContactModule)},
   {path:"products", loadChildren:()=>import("./ui/components/products/products.module").then(module=>module.ProductsModule)},
+  {path:"products/:pageNo", loadChildren:()=>import("./ui/components/products/products.module").then(module=>module.ProductsModule)},
+  {path:"register", loadChildren:()=>import("./ui/components/register/register.module").then(module=>module.RegisterModule)},
+  {path:"login", loadChildren:()=>import("./ui/components/login/login.module").then(module=>module.LoginModule)},
+  {path:"password-reset", loadChildren:()=>import("./ui/components/password-reset/password-reset.module").then(module=>module.PasswordResetModule)},
+  {path:"update-password", loadChildren:()=>import("./ui/components/update-password/update-password.module").then(module=>module.UpdatePasswordModule)}
 
 
 ];

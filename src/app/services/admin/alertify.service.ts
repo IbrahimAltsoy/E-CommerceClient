@@ -20,7 +20,7 @@ export class AlertifyService {
 export class AlertifyOptions{
   messageType: MessageType= MessageType.Notify;
   position: MessagePosition = MessagePosition.TopRight;
-  delay:number =3;
+  delay?:number =3;
   dismisOthers: boolean =false;
 
 

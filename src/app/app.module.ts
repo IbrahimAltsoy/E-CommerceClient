@@ -8,9 +8,19 @@ import { UiModule } from './ui/ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HttpClientModule } from '@angular/common/http';
-import { DeleteDirective } from './directives/admin/delete.directive';
-import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { DialogModule } from './dialogs/dialog.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { LoginComponent } from './ui/components/login/login.component';
+import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonModule, SocialAuthService, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { HttpErrorHandlerInterceptorService } from './services/common/http-error-handler-interceptor.service';
+import { ComponentsModule } from './ui/components/components.module';
+import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
+
+
+
+
+
 
 
 
@@ -18,7 +28,13 @@ import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.com
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    DynamicLoadComponentDirective
+
+
+
+
 
   ],
   imports: [
@@ -30,11 +46,43 @@ import { DeleteDialogComponent } from './dialogs/delete-dialog/delete-dialog.com
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter:()=> localStorage.getItem("accessToken"),
+        allowedDomains:["localhost:7201"]
+      }
+    }), SocialLoginModule,GoogleSigninButtonModule
 
   ],
 
-  providers: [{provide: "baseUrl", useValue:"https://localhost:7201/api",multi:true}],
+  providers: [
+    {provide: "baseUrl", useValue:"https://localhost:7201/api",multi:true},
+    {provide: "baseSignalRUrl", useValue:"https://localhost:7201/",multi:true},
+
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '452756695338-an9ehvm7aotc1dhvrrflpqrmehbeqqj0.apps.googleusercontent.com'
+          )
+        }
+        // ,
+        // {
+        //   id: FacebookLoginProvider.PROVIDER_ID,
+        //   provider: new FacebookLoginProvider('clientId')
+        // }
+      ],
+      onError: (err) => {
+        console.error(err);
+      }
+    } as SocialAuthServiceConfig
+  }, {provide:HTTP_INTERCEPTORS, useClass:HttpErrorHandlerInterceptorService, multi:true}],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
