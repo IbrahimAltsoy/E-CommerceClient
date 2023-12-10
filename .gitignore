@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
@@ -40,3 +41,20 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+=======
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+>>>>>>> df0a641df0d20383f5342c430d77fb644f85d8d5
